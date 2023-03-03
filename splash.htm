@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" type="text/css" href="w3.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<title>splash</title>
+	<style type="text/css">
+		.bar{
+			width: 35px;
+			height: 5px;
+			background-color: white;
+			margin: 6px 0;
+			margin-left: 20px;
+		}
+		#header{
+			margin-top: 20px;
+		}
+		.sidenav{
+			width: 0;
+			height: 100%;
+			position: fixed;
+			z-index: 1;
+			top: 0;
+			left: 0;
+			background-color: black;
+			overflow-x: hidden;
+			transition: 0.5s;
+			padding-top: 60px;
+			padding-left: 0px;
+			color: white;
+			text-align: center;
+		}
+		.sidenav .closebtn {
+			position: absolute;
+			top: 0;
+			right: 25px;
+			font-size: 36px;
+			margin-left: 50px;
+		}
+		.modal{
+			display: none;
+			position: fixed;
+			z-index: 1;
+			padding-top: 100px;
+			left: 0;
+			top: 0;
+			width: 100%;
+			height: 100%;
+			overflow: auto;
+			background-color: rgb(0, 0, 0);
+			background-color: rgba(0, 0, 0, 0.9);
+		}
+		.modal-content{
+			margin: auto;
+			display: block;
+			width: 80%;
+			max-width: 700px;
+		}
+		.closemdl{
+			position: absolute;
+			top: 15px;
+			right: 35px;
+			color: #f1f1f1;
+			font-weight: bold;
+			transition: 0.3s;
+		}
+		.poppup{
+			display: none;
+			position: fixed;
+			bottom: 0;
+			right: 0%;
+			z-index: 9;
+			background-color: pink;
+			border-radius: 5px;
+			width: 100%;
+			height: 100%;
+		}
+		.focuson{
+		   color: red;
+		}
+		.footer{
+			float: right;
+			bottom: 0;
+		}
+		#xxx{
+			width: 100%;
+			color: darkturquoise;
+		}
+		.splashbtn{
+			width: 100%;
+			height: 150px;
+			background-color: darkturquoise;
+			margin-top: 10;
+		}
+
+		.fa {
+
+  font-size: 40px;
+  width: 40px;
+  text-align: center;
+  text-decoration: none;
+  margin: 5px 2px;
+  border-radius: 0%;
+}
+
+.fa:hover {
+    opacity: 0.7;
+}
+
+.fa-facebook {
+  background: black;
+  color: white;
+}
+
+.fa-twitter {
+  background: black;
+  color: white;
+}
+
+.fa-google {
+  background: #dd4b39;
+  color: white;
+}
+
+.fa-linkedin {
+  background: #007bb5;
+  color: white;
+}
+
+.fa-youtube {
+  background: #bb0000;
+  color: white;
+}
+
+.fa-instagram {
+  background: black;
+  color: white;
+}
+
+.fa-pinterest {
+  background: #cb2027;
+  color: white;
+}
+
+.fa-snapchat-ghost {
+  background: #fffc00;
+  color: white;
+  text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+}
+
+.fa-skype {
+  background: #00aff0;
+  color: white;
+}
+
+.fa-android {
+  background: #a4c639;
+  color: white;
+}
+
+.fa-dribbble {
+  background: #ea4c89;
+  color: white;
+}
+
+.fa-vimeo {
+  background: #45bbff;
+  color: white;
+}
+
+.fa-tumblr {
+  background: #2c4762;
+  color: white;
+}
+
+.fa-vine {
+  background: #00b489;
+  color: white;
+}
+
+.fa-foursquare {
+  background: black;
+  color: white;
+}
+
+.fa-stumbleupon {
+  background: #eb4924;
+  color: white;
+}
+
+.fa-flickr {
+  background: #f40083;
+  color: white;
+}
+
+.fa-yahoo {
+  background: #430297;
+  color: white;
+}
+
+.fa-soundcloud {
+  background: #ff5500;
+  color: white;
+}
+
+.fa-reddit {
+  background: #ff5700;
+  color: white;
+}
+
+.fa-rss {
+  background: #ff6600;
+  color: white;
+}
+
+	</style>
+</head>
+<body class="w3-black" style="background-image: bg1.png;">
+	
+	<div class="w3-card-1" id="xxx">
+		<h1 class=""><span id="header">&#9773; Rocket VCF</h1>
+	</div>
+
+	<div class="w3-container w3-center w3-round-large">
+		<!--<input type="button" name="" class="splashbtn w3-button" value="Create a new VCF" onclick="redcreateVcf()">--><br><br>
+		<div name="" class="splashbtn w3-button w3-round-large" onclick="searchExisting()"><h3>main VCF file &#10170;</h3></div>
+	</div>
+
+	<div id="sidebar" class="sidenav ">
+		<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+		<h4 id="myname"></h4>
+		<h4 id="myphone"></h4>
+		<h4 id="mydate"></h4><br>
+		<h4>Written By</h4>
+		<h4>Victor Njagi Chan</h4>
+		<a class="fa fa-twitter" href=""></a>
+		<a href="" class="fa fa-instagram"></a>
+		<a href="" class="fa fa-github"></a>
+		<a href="http://wa.me/254716732614" class="fa fa-whatsapp"></a>
+
+
+
+		
+	</div>
+
+	<div class="w3-card-4 modal" id="main">
+		<span class="closemdl" onclick="closemdl()">&times;</span>
+		<form class="w3-container" id="details">
+
+			<label class="w3-text-pink"><b>Name</b></label>
+			<input type="text" name="" class="w3-input w3-boarder">
+			<label class="w3-text-pink"><b>Phone</b></label>
+			<input type="text" name="" class="w3-input w3-boarder"><br>
+			
+			<input type="button" name="" onclick="validate()" value="Continue" class="w3-button w3-bar w3-red" id="submit"><br>
+
+			<div class="poppup w3-center" id="poppup">
+				<h4 id="statement">Is this your number?</h4>
+				<input type="button" name="" onclick="checkphone(this)" class="w3-btn w3-white" value="yes" ><input  class="w3-btn w3-red" onclick="checkphone(this)" type="button" value="edit">
+			</div>
+
+		</form>
+		
+	</div>
+
+	<div class="footer">
+		<p></p>
+	</div>
+	<script type="text/javascript">
+		document.body.onload = function(){
+			var json = localStorage.getItem("details");
+			var decodedjson = JSON.parse(json);
+			document.getElementById("myname").innerHTML = decodedjson.name;
+			document.getElementById("mydate").innerHTML = "Joined "+decodedjson.date;
+			document.getElementById("myphone").innerHTML = decodedjson.phone;
+		}
+
+        var detForm = document.getElementById("details");
+        document.getElementById("submit").style.display = "block";
+
+
+		var menubtn = document.getElementById("header");
+
+		menubtn.addEventListener("click",(e)=>{
+			document.getElementById("sidebar").style.width = "250px";
+			document.getElementById("main").style.marginLeft = "250px";
+			document.body.style.backgroundColor = "rgba(0,0,0,0,0.4)";
+
+
+		});
+
+		function closeNav(){
+			document.getElementById("sidebar").style.width = "0px";
+			document.getElementById("main").style.marginLeft = "0px";
+			//document.body.style.backgroundColor = "pink";
+
+		}
+
+		function showLogin(){
+			document.getElementById("main").style.display = "block";
+		}
+		function closemdl(){
+			document.getElementById("main").style.display = "none";
+		}
+		function confirmPhone(x){
+            document.getElementById("poppup").style.display = "block";
+            document.getElementById("poppup").style.backgroundColor = "grey";
+            document.getElementById("statement").innerHTML += "<br>"+x+"";
+
+		}
+		function checkphone(x){
+			var option = x.value;
+
+			switch(option){
+				case "yes":
+				sendData();
+				break;
+				case "edit":
+				revert();
+				break; 
+			}
+		}
+
+		function revert(){
+			document.getElementById("poppup").style.display = "none";
+			document.getElementById("details")[1].classList.toggle("focuson");
+
+		}
+		function sendData(){
+			window.location.replace("splash.htm");
+
+		}
+		function validate(){
+			if(detForm[0].value == ""){
+				detForm[0].placeholder = "Please enter your name";
+				return;
+			}
+			if(detForm[1].value == ""){
+				detForm[1].placeholder = "Please enter phone number";
+				return;
+			}
+			if(detForm[1].value.match(nameRegex)){
+				alert("invalid name");
+				return;
+			}
+			if(!detForm[1].value.match(phoneNumberRegex)){
+				alert("invalid number");
+				return;
+				
+			}
+			confirmPhone(detForm[1].value);
+		}
+
+		function searchExisting(){
+			var xmlhttp2 = new XMLHttpRequest();
+			xmlhttp2.onload  = function(e){
+	         window.location.href = "paginated.htm";
+
+			};
+			xmlhttp2.open("POST","searchExisting.php");
+			xmlhttp2.send();
+
+		}
+        function redcreateVcf(){
+        	window.location.href = "createVcf.htm";
+        	}
+        function createVcf(){
+        	var xmlhttp3 = new XMLHttpRequest();
+        	xmlhttp3.onload  = function(e){
+				alert(e.target.responseText);
+
+			};
+			xmlhttp3.open("POST","createVcf.php");
+			xmlhttp3.send();
+
+        }
+
+
+	</script>
+
+</body>
+<footer class="w3-footer" style="padding-top: 80%;">
+	<a href="http://wa.me/254716732614" title="Chat on WhatsApp" class="fa fa-whatsapp"></a>
+	<a href="" class="fa" title="&copy;Copyright">C</a>
+	<a href="" class="fa" title="Terms of use">T</a>
+	<a href="" class="fa fa-instagram" title="Follow me"></a>
+</footer>
+</html>

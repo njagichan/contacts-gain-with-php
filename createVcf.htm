@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" type="text/css" href="w3.css">
+	<title>front-end</title>
+	<style type="text/css">
+		.bar{
+			width: 35px;
+			height: 5px;
+			background-color: white;
+			margin: 6px 0;
+			margin-left: 20px;
+		}
+		#header{
+			margin-top: 20px;
+		}
+		.sidenav{
+			width: 0;
+			height: 100%;
+			position: fixed;
+			z-index: 1;
+			top: 0;
+			left: 0;
+			background-color: black;
+			overflow-x: hidden;
+			transition: 0.5s;
+			padding-top: 60px;
+			text-align: center;
+		}
+		.sidenav .closebtn {
+			position: absolute;
+			top: 0;
+			right: 25px;
+			font-size: 36px;
+			margin-left: 50px;
+			color: white;
+		}
+		.modal{
+			display: none;
+			position: fixed;
+			z-index: 1;
+			padding-top: 100px;
+			left: 0;
+			top: 0;
+			width: 100%;
+			height: 100%;
+			overflow: auto;
+			background-color: darkturquoise;
+			background-color: darkturquoise;
+			color: white;
+		}
+		.modal-content{
+			margin: auto;
+			display: block;
+			width: 80%;
+			max-width: 700px;
+		}
+		.closemdl{
+			position: absolute;
+			top: 15px;
+			right: 35px;
+			color: #f1f1f1;
+			font-weight: bold;
+			transition: 0.3s;
+		}
+		.poppup{
+			display: none;
+			position: fixed;
+			bottom: 0;
+			right: 0%;
+			z-index: 9;
+			background-color: darkturquoise;
+			border-radius: 5px;
+			width: 100%;
+			height: 100%;
+		}
+		.focuson{
+		   color: red;
+		}
+		.footer{
+			float: right;
+			bottom: 0;
+		}
+		.xxx{
+			color: darkturquoise;
+		}
+		.eee{
+			width: 100%;
+			height: 200px;
+			background-color: darkturquoise;
+			
+		}
+	</style>
+</head>
+<body class="w3-container">
+	
+	<div class="xxx" id="xxx">
+		<h2 class=""><span id="header"> &#9776;</span> Rocket VCF</h2>
+	</div>
+
+	<div id="sidebar" class="sidenav">
+		<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+
+		
+	</div>
+	<div class="w3-center">
+		<p></p>
+		<input type="button" name="" class="w3-button eee" value="Create Vcf" onclick="showLogin()">
+	</div>
+
+	<div class="w3-card-4 modal" id="main">
+		<span class="closemdl" onclick="closemdl()">&times;</span>
+		<form class="w3-container" id="details">
+
+			<label class=""><b>VCF Name</b></label>
+			<input type="text" name="vcfname" class="w3-input w3-boarder"><br>
+			
+			<input type="button" name="" onclick="validate()" value="Continue" class="w3-button w3-bar w3-red" id="submit"><br>
+
+			<div class="poppup w3-center" id="poppup">
+				<h4 id="statement">Is this your number?</h4>
+				<input type="button" name="" onclick="checkphone(this)" class="w3-btn w3-white" value="yes" ><input  class="w3-btn w3-red" onclick="checkphone(this)" type="button" value="edit">
+			</div>
+
+		</form>
+		
+	</div>
+
+	<div class="footer">
+		<p></p>
+	</div>
+	<script type="text/javascript">
+		
+        var detForm = document.getElementById("details");
+        document.getElementById("submit").style.display = "block";
+
+
+		var menubtn = document.getElementById("header");
+
+		menubtn.addEventListener("click",(e)=>{
+			document.getElementById("sidebar").style.width = "250px";
+			document.getElementById("main").style.marginLeft = "250px";
+			document.body.style.backgroundColor = "rgba(0,0,0,0,0.4)";
+
+
+		});
+
+		function closeNav(){
+			document.getElementById("sidebar").style.width = "0px";
+			document.getElementById("main").style.marginLeft = "0px";
+			//document.body.style.backgroundColor = "pink";
+
+		}
+
+		function showLogin(){
+			document.getElementById("main").style.display = "block";
+		}
+		function closemdl(){
+			document.getElementById("main").style.display = "none";
+		}
+		function confirmPhone(x){
+            document.getElementById("poppup").style.display = "block";
+            document.getElementById("poppup").style.backgroundColor = "grey";
+            document.getElementById("statement").innerHTML += "<br>"+x+"";
+
+		}
+
+		function validate(){
+			if(detForm[0].value == ""){
+				alert("Name?");
+				return;
+			}
+			sendData();
+
+			
+		}
+
+		function sendData(){
+			var xhttp = new XMLHttpRequest();
+			var contactDetails = new FormData(detForm);
+			xhttp.addEventListener("load",(e)=>{
+				localStorage.setItem("details",e.target.responseText);
+			alert(e.target.responseText);
+			});
+			xhttp.open("POST","createVcf.php",true);
+			xhttp.send(contactDetails);
+
+		}
+
+
+	
+	</script>
+
+</body>
+</html>
